@@ -14,13 +14,15 @@ def average_test_result(results):
 def display_average_result(average):
     print("your average test result is: {0}".format(average))
 
-
+def testData():
+    with open("test_data.txt", mode = "r", encoding = "utf-8") as Test_data_exercsie:
+        for line in Test_data_exercsie:
+            print(line)
 def main():
     test_results = get_test_results()
     average = average_test_result(test_results)
     display_average_result(average)
-def testData():
-    with open("test_data.txt", mode = "r", encoding = "utf-8") as Test_data_exercsie: 
+
 
 
 if __name__ == "__main__":
