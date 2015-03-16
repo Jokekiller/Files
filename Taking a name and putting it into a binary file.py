@@ -20,6 +20,4 @@ with open("names.dat", mode = "wb") as binary_file:
 
 with open("names.dat", mode= "rb") as binary_file:
     people = pickle.load(binary_file)
-    #print(people)
-for person in people:
-    print(Person.name, Person.dob)
+
