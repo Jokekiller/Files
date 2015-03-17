@@ -24,15 +24,21 @@ def display_games(games):
     for game in games:
         print("|{0:^10}|{1:^10}|{2:^10}|{3:^10}|{4:^10}|{5:^10}|".format(game.name, game.platform, game.genre, game.cost, game.players, game.online))
 
-def get_game_from_user():
-    game = Game()
-    game.name = input("Enter the game name: ")
-    game.platform = input("Enter the platform: ")
-    game.genre = input("Enter the game genre: ")
-    game.cost = float(input("Enter the game cost: "))
-    game.players = int(input("Enter the number of players: "))
-    game.online = input("Enter the online functionality of the game: ")
-    return game
+def get_game_from_user(games):
+    carry_on_asking = False
+    while not carry_on_asking:
+        game = Game()
+        game.name = input("Enter the game name: ")
+        if game.name == "-1":
+            carry_on_asking = True
+        else:
+            game.platform = input("Enter the platform: ")
+            game.genre = input("Enter the game genre: ")
+            game.cost = float(input("Enter the game cost: "))
+            game.players = int(input("Enter the number of players: "))
+            game.online = input("Enter the online functionality of the game: ")
+            games.append(game)
+    return games
 
 def display_menu():
     print()
@@ -52,7 +58,7 @@ def main():
         display_menu()
         selected_option = input("Please select a menu option: ")
         if selected_option == "1":
-            games.append(get_game_from_user())
+            games = get_game_from_user(games)
         elif selected_option == "2":
             display_games(games)
         elif selected_option == "3":
