@@ -9,8 +9,12 @@ class Game:
         self.online = None
 game_file = []
 def load_games(filename):
-    with open("games.dat", mode = "rb")as binary_file:
-       games = pickle.load(binary_file)
+    games = []
+    try:
+        with open("games.dat", mode = "rb")as binary_file:
+           games = pickle.load(binary_file)
+    except IOError:
+        print("Error: can't find file or read data")
     return games
 
 def save_games(filename, games):
